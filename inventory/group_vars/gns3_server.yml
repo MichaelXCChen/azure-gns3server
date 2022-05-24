@@ -1,0 +1,3 @@
+ansible_ssh_private_key_file: $HOME/.ssh/id_rsa
+ansible_ssh_user: michael
+ansible_ssh_common_args: '-0 StrictHostKeyChecking=no'

@@ -1,0 +1,28 @@
+---
+- name: Connect to Azure Subscription
+  hosts: localhost
+  connection: local
+  tasks: 
+  - name: Get public IP address
+    azure_rm_publicipaddress_info:
+      resource_group: 'gns3-resources'
+    register: azure_ip
+  - debug:
+      msg: "{{azure_ip.publicipaddresses[0].ip_address}}"
+ 
+- name: deploy gns3 server
+  hosts: gns3
+
+  vars_files:
+  - vars.yml
+  
+  tasks:
+  - name: setup rc.local file to GNS3 server VM
+    ansible.builtin.copy:
+      src: host_config/rc.local
+      dest: /etc/rc.local
+      owner: root
+      group: root
+      mode: '0544'
+    become: yes
+...

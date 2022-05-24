@@ -1,0 +1,10 @@
+---
+- name: Setup routers  
+  hosts: localhost
+  
+  tasks:
+  - name: send configuration commands to IOS
+    script: 
+      cmd: /home/michael/azure-gns3server/setup_scripts/setup_R1.py
+      executable: python3
+...

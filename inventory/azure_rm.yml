@@ -1,4 +1,6 @@
 plugin: azure_rm
 auth_source: auto
+include_vm_resource_groups:
+- gns3-resources
 conditional_groups:
   gns3: "'gns3-server' in name"
